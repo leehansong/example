@@ -1,11 +1,98 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <h1>data science</h1>
-        <ul>
-            <li><a href="1.html">orange3</a></li>
-            <li><a href="2.html">pandas</a></li>
-        </ul>
-        <h2>Welcome</h2>
-        Welcome to my hompage.
-    </body>
+
+<head>
+    <title>대구 WEB + AI</title>
+    <style type="text/css">
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        ul:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    
+        h1 {
+            margin: 100px;
+            text-align:center;
+            font-family: sans-serif;
+            /*고딕체*/
+            color: gray;
+        }
+
+        body {
+            margin: 50px;
+        }
+
+        #container {
+            margin: 50px auto;
+            /*정중앙*/
+            width: 500px;
+            height: 375px;
+            border: 10px black solid;
+            /*테두리*/
+        }
+
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>대구 WEB + AI 프로젝트</h1>
+    <ul>
+        <li><a class="active" href="#home">home</a></li>
+        <li><a href="#python">Python</a></li>
+        <li><a href="#web">Web</a></li>
+        <li><a href="#orange">Orange</a></li>
+    </ul>
+
+    <div id="container">
+        <video autoplay='true' id="videoElement"></video>
+    </div>
+
+    <script>
+        let video = document.querySelector('#videoElement')
+        if (navigator.mediaDevices.getUserMedia) {/*캠 권한여부요청*/
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) { /*캠 띄우기*/
+                    video.srcObject = stream
+                })
+                .catch(function (error) {
+                    console.log("something went wrong!")
+                })
+        } else { /*만약 캠이없다면*/
+            console.log("getUserMedia not supported!")
+        }
+    </script>
+</body>
+
 </html>
